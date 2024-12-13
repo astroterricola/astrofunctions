@@ -1,4 +1,22 @@
 # -*- coding: utf-8 -*-
+
+# Función para cargar los datos
+def lc_cargar_datos(archivo, columnas, saltar_filas=1):
+    """
+    Carga datos desde un archivo delimitado por espacios.
+
+    :param archivo: Ruta al archivo.
+    :param columnas: Lista de nombres de columnas.
+    :param saltar_filas: Número de filas a saltar al cargar.
+    :return: DataFrame con los datos cargados.
+    """
+    try:
+        lc_df = pd.read_csv(archivo, delim_whitespace=True, skiprows=saltar_filas, names=columnas)
+        return lc_df
+    except Exception as lc_error:
+        print(f"Error al cargar {archivo}: {lc_error}")
+        return None
+
 def lc_promedio(lista):
     """
     Entrega el promedio de los datos de una lista de datos.
